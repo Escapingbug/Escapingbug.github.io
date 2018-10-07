@@ -55,8 +55,7 @@ function util_navigate_archive() {
 }
 
 function util_print_post(content, term) {
-    console.log('util: ' + JSON.stringify(content) + term.echo);
-    var content = '<div class="content">' + content + '</div>\n';
+    //var content = '<div class="content">' + content + '</div>\n';
     term.echo(content, {raw: true});
 }
 
@@ -101,9 +100,7 @@ var terminal_settings = {
     prompt: prompt,
     greetings: function() {
         this.echo(greetings);
-    },
-    height: 1000,
-    weight: 1000,
+    }
 };
 
 var commands = {

@@ -332,17 +332,17 @@
 .content h2,
 .content .h2 {
   position: relative;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: bold;
   text-transform: none;
   letter-spacing: normal;
-  margin-top: 2rem;
+  margin-top: 2em;
   margin-bottom: 0.5rem;
   color: #dedede;
   display: block;
 }
 .content h3 {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   font-weight: bold;
   text-decoration: underline;
   color: #dedede;
@@ -414,13 +414,13 @@
 }
 .content table {
   width: 100%;
-  font-size: 13px;
+  font-size: 20px;
   border-collapse: collapse;
   text-align: left;
   background: #3b3b3b;
 }
 .content th {
-  font-size: 14px;
+  font-size: 21px;
   font-weight: bold;
   color: #dedede;
   border-bottom: 1px dashed #ccc;
@@ -442,7 +442,7 @@ html {
 body {
   color: #b9babc;
   background-color: #181818;
-  font-size: 15px;
+  font-size: 22px;
   font-family: "Menlo", monospace;
   font-weight: 400;
   line-height: 1.725;
@@ -1058,9 +1058,9 @@ article .content h2:before {
   content: "#";
   color: #5bac4a;
   position: absolute;
-  left: -1rem;
+  left: -1em;
   top: -4px;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: bold;
 }
 article .content img,
