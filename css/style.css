@@ -1060,9 +1060,9 @@ article .content h2:before {
   content: "#";
   color: #5bac4a;
   position: absolute;
-  left: -1em;
-  top: -4px;
-  font-size: 1.2em;
+  left: -1rem;
+  top: 0px;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 article .content img,
