@@ -43,7 +43,7 @@
     
 
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/js/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.terminal.min.js"></script>
         <script>
@@ -132,7 +132,9 @@ class Posts {
                 var data = response.data.data;
 
                 for (var each in data) {
-                    this.post_list += each + '|\t' + data[each].title + '\n';
+                    var path = data[each].date.split('T')[0].replace(/-/g, '/');
+                    path += '/' + data[each].path.substr(data[each].path.lastIndexOf('/') + 1).replace('.json', '');
+                    this.post_list += '<div class="content"><a href="{}">'.replace('{}', path) + data[each].title + '</a></div>\n';
                 }
             });
     }
@@ -240,7 +242,7 @@ function posts_cmd(subcommand, arg) {
     var subcommand_list = () => {
         posts.get_post_list()
             .then((list) => {
-                this.echo(list);
+                this.echo(list, {raw: true});
             });
     }
 
@@ -258,7 +260,7 @@ function posts_cmd(subcommand, arg) {
     var subcommands = {
         'help': [subcommand_help, 'print help message'],
         'list': [subcommand_list, 'list post titles'],
-        'read': [subcommand_read, 'read [title | post_num]'],
+        //'read': [subcommand_read, 'read [title | post_num]'],
     }
 
     if (!subcommand || !subcommands[subcommand]) {
