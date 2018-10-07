@@ -582,7 +582,7 @@ body {
 }
 #header #nav {
   letter-spacing: 0.01em;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   font-style: normal;
   font-weight: 200;
   color: #5bac4a;
@@ -718,10 +718,12 @@ body {
 }
 #header-post #nav {
   letter-spacing: 0.01em;
-  font-size: 0.8rem;
+  float: right;
+  font-size: 0.8em;
   font-style: normal;
   font-weight: 200;
   color: #5bac4a;
+  margin-top: 5px;
 }
 #header-post #nav ul {
   line-height: 15px;
@@ -1010,10 +1012,10 @@ body {
 }
 .post-list .post-item .meta {
   display: block;
-  font-size: 14px;
+  font-size: 20px;
   color: #666;
   min-width: 100px;
-  margin-right: 16px;
+  margin-right: 20px;
 }
 @media (min-width: 480px) {
   .post-list .post-item {
@@ -2031,61 +2033,52 @@ article .content .caption {
   }
 }
 .highlight {
-  color: #222;
-  background: #272822;
+  color: #ddd;
+  background: #444;
 }
-.highlight .code .tag,
 .highlight .code .keyword,
 .highlight .code .selector-tag,
 .highlight .code .literal,
-.highlight .code .strong,
-.highlight .code .name {
-  color: #323232;
-}
-.highlight .code .code {
-  color: #66d9ef;
-}
-.highlight .code .class .title {
-  color: #522;
-}
-.highlight .code .attribute,
-.highlight .code .symbol,
-.highlight .code .regexp,
+.highlight .code .section,
 .highlight .code .link {
-  color: #5f191b;
+  color: #fff;
+}
+.highlight .code .subst {
+  color: #ddd;
 }
 .highlight .code .string,
-.highlight .code .bullet,
-.highlight .code .subst,
 .highlight .code .title,
-.highlight .code .section,
-.highlight .code .emphasis,
+.highlight .code .name,
 .highlight .code .type,
+.highlight .code .attribute,
+.highlight .code .symbol,
+.highlight .code .bullet,
 .highlight .code .built_in,
-.highlight .code .builtin-name,
-.highlight .code .selector-attr,
-.highlight .code .selector-pseudo,
 .highlight .code .addition,
 .highlight .code .variable,
 .highlight .code .template-tag,
 .highlight .code .template-variable {
-  color: #0016e2;
+  color: #d88;
 }
 .highlight .code .comment,
 .highlight .code .quote,
 .highlight .code .deletion,
 .highlight .code .meta {
-  color: #75715e;
+  color: #777;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
 .highlight .code .literal,
-.highlight .code .doctag,
 .highlight .code .title,
 .highlight .code .section,
+.highlight .code .doctag,
 .highlight .code .type,
-.highlight .code .selector-id {
+.highlight .code .name,
+.highlight .code .strong {
   font-weight: bold;
+}
+.highlight .code .emphasis {
+  font-style: italic;
 }
 pre {
   font-family: "Menlo", monospace;
