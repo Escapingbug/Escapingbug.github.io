@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang=en>
 <head>
@@ -10,7 +13,7 @@
 <meta name="keywords" content="CTF pwn DragonCTF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DragonCTF 2018 Pwn Challenges Writeup">
-<meta property="og:url" content="http://anciety/me/2018/10/05/post/index.html">
+<meta property="og:url" content="https://anciety/me/2018/10/05/post/index.html">
 <meta property="og:site_name" content="AncyBlog">
 <meta property="og:description" content="DragonCTF 2018 Pwn Challenges WriteupYup, I know this is a late writeup…Just.. take it as a record of myself. FastStorageAs a record, I’m not going to completely analysis the whole challenge. This cha">
 <meta property="og:locale" content="en">
@@ -89,11 +92,11 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Shell</a></li>
          
           <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives">Writing</a></li>
          
           <li><a href="https://github.com/Escapingbug">Projects</a></li>
         
@@ -117,16 +120,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://anciety/me/2018/10/05/post/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://anciety/me/2018/10/05/post/&text=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://anciety/me/2018/10/05/post/&is_video=false&description=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=DragonCTF 2018 Pwn Challenges Writeup&body=Check out this article: http://anciety/me/2018/10/05/post/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://anciety/me/2018/10/05/post/&name=DragonCTF 2018 Pwn Challenges Writeup&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://anciety/me/2018/10/05/post/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://anciety/me/2018/10/05/post/&text=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://anciety/me/2018/10/05/post/&is_video=false&description=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DragonCTF 2018 Pwn Challenges Writeup&body=Check out this article: https://anciety/me/2018/10/05/post/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://anciety/me/2018/10/05/post/&name=DragonCTF 2018 Pwn Challenges Writeup&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -233,11 +236,11 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Shell</a></li>
          
           <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives">Writing</a></li>
          
           <li><a href="https://github.com/Escapingbug">Projects</a></li>
         
@@ -250,16 +253,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://anciety/me/2018/10/05/post/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://anciety/me/2018/10/05/post/&text=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://anciety/me/2018/10/05/post/&is_video=false&description=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=DragonCTF 2018 Pwn Challenges Writeup&body=Check out this article: http://anciety/me/2018/10/05/post/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://anciety/me/2018/10/05/post/&name=DragonCTF 2018 Pwn Challenges Writeup&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://anciety/me/2018/10/05/post/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://anciety/me/2018/10/05/post/&text=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://anciety/me/2018/10/05/post/&is_video=false&description=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DragonCTF 2018 Pwn Challenges Writeup&body=Check out this article: https://anciety/me/2018/10/05/post/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://anciety/me/2018/10/05/post/&title=DragonCTF 2018 Pwn Challenges Writeup"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://anciety/me/2018/10/05/post/&name=DragonCTF 2018 Pwn Challenges Writeup&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -285,11 +288,11 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Shell</a></li>
          
           <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives">Writing</a></li>
          
           <li><a href="https://github.com/Escapingbug">Projects</a></li>
         
@@ -320,3 +323,5 @@
     </div>
 </body>
 </html>
+
+
