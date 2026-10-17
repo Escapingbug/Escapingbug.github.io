@@ -133,34 +133,17 @@ self.addEventListener("notificationclick", (event) => {
 
 async function handleMalinkPush(event) {
   let payload;
-  try {
-    payload = event.data?.json();
-  } catch {
-    return;
-  }
-  if (!validPushPayload(payload)) return;
-  if (!await claimPushEvent(payload.eventId)) return;
-
-  const windows = await self.clients.matchAll({
-    type: "window",
-    includeUncontrolled: true,
-  });
-  for (const client of windows) {
-    client.postMessage({ type: "MALINK_PUSH_RECEIVED", payload });
-  }
-  if (windows.some((client) => client.visibilityState === "visible")) return;
-
-  const presentation = notificationPresentation(payload.status);
-  await self.registration.showNotification(presentation.title, {
-    body: presentation.body,
-    icon: scopedUrl("favicon.svg"),
-    badge: scopedUrl("favicon.svg"),
-    tag: `malink-turn-${payload.eventId}`,
-    renotify: false,
-    data: {
-      type: "malink.turn-terminal",
-      sessionId: payload.sessionId,
-    },
+  try { payload = event.data?.json(); } catch { return; }
+  if (!payload || !validOpaqueId(payload.event_id) || !validOpaqueId(payload.room_id)) return;
+  if (!await claimPushEvent(payload.event_id)) return;
+  const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+  for (const client of windows) client.postMessage({ type: 'MALINK_PUSH_RECEIVED', payload });
+  // userVisibleOnly requires a visible notification even if a window is open.
+  await self.registration.showNotification('Malink has a new message', {
+    body: 'Open Malink to synchronize and view the message.',
+    icon: scopedUrl('favicon.svg'), badge: scopedUrl('favicon.svg'),
+    tag: `malink-event-${payload.event_id}`, renotify: false,
+    data: { type: 'matrix.event', roomId: payload.room_id, eventId: payload.event_id },
   });
 }
 
@@ -183,36 +166,12 @@ async function claimPushEvent(eventId) {
 }
 
 async function openNotificationTarget(data) {
-  if (
-    !data ||
-    data.type !== "malink.turn-terminal" ||
-    !validOpaqueId(data.sessionId)
-  ) return;
-  const route = `${scopedUrl("./")}#session=${encodeURIComponent(data.sessionId)}`;
-  const windows = await self.clients.matchAll({
-    type: "window",
-    includeUncontrolled: true,
-  });
+  if (!data || data.type !== 'matrix.event' || !validOpaqueId(data.roomId) || !validOpaqueId(data.eventId)) return;
+  const route = scopedUrl('./');
+  const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
   const target = windows[0];
-  if (target) {
-    if ("navigate" in target) await target.navigate(route);
-    await target.focus();
-    return;
-  }
-  await self.clients.openWindow(route);
-}
-
-function validPushPayload(value) {
-  return Boolean(
-    value &&
-    value.version === 1 &&
-    value.type === "malink.turn-terminal" &&
-    validOpaqueId(value.eventId) &&
-    validOpaqueId(value.workspaceId) &&
-    validOpaqueId(value.projectId) &&
-    validOpaqueId(value.sessionId) &&
-    ["succeeded", "cancelled", "failed"].includes(value.status),
-  );
+  if (target) { if ('navigate' in target) await target.navigate(route); await target.focus(); }
+  else await self.clients.openWindow(route);
 }
 
 function validOpaqueId(value) {
@@ -222,23 +181,4 @@ function validOpaqueId(value) {
     value.length <= 256 &&
     !/[\u0000-\u001f\u007f]/u.test(value)
   );
-}
-
-function notificationPresentation(status) {
-  if (status === "failed") {
-    return {
-      title: "Agent task needs attention",
-      body: "The task failed. Tap to view the session.",
-    };
-  }
-  if (status === "cancelled") {
-    return {
-      title: "Agent task cancelled",
-      body: "Tap to return to the session.",
-    };
-  }
-  return {
-    title: "Agent task completed",
-    body: "Tap to view the result.",
-  };
 }
