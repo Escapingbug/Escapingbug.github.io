@@ -46,16 +46,17 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   const requestUrl = new URL(event.request.url);
+  // The application shell owns only its own origin. Cross-origin Matrix
+  // requests (including long polls and media) stay with the browser/SDK;
+  // forwarding them here adds another response and cancellation boundary.
+  if (requestUrl.origin !== self.location.origin) return;
   if (
-    requestUrl.origin === self.location.origin &&
-    (
-      requestUrl.pathname.startsWith("/_matrix/") ||
-      requestUrl.pathname === `${BASE_PATH}version.json`
-    )
+    requestUrl.pathname.startsWith("/_matrix/") ||
+    requestUrl.pathname === `${BASE_PATH}version.json`
   ) {
-    // The homeserver shares this origin in production. Matrix /sync is a
-    // credentialed long poll and must never be cached or replayed by the app
-    // shell worker. The static deployment version is also authoritative and must
+    // Same-origin Matrix /sync is a credentialed long poll and must never be
+    // cached or replayed by the app shell worker. The static deployment version
+    // is also authoritative and must
     // never fall back to a cached response; leaving these requests unhandled
     // sends them directly to the network.
     return;
@@ -76,10 +77,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (
-    requestUrl.origin === self.location.origin &&
-    requestUrl.pathname.startsWith(`${BASE_PATH}assets/`)
-  ) {
+  if (requestUrl.pathname.startsWith(`${BASE_PATH}assets/`)) {
     // Asset names contain their content hash and are immutable. Prefer the
     // Cache API so a slow origin cannot hold a warm client on the crypto WASM
     // download before Matrix startup. A new release has new URLs and therefore
@@ -101,10 +99,7 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        if (
-          response.ok &&
-          requestUrl.origin === self.location.origin
-        ) {
+        if (response.ok) {
           const copy = response.clone();
           caches
             .open(CACHE_NAME)
